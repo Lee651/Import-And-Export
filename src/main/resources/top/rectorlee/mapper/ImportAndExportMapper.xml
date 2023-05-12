@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.rectorlee.mapper.ImportAndExportMapper">
+    <resultMap id="UserResult" type="top.rectorlee.entity.User">
+        <result column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="phone" property="phone" />
+        <result column="ceate_by" property="ceateBy" />
+        <result column="birthday" property="birthday" />
+        <result column="remark" property="remark" />
+    </resultMap>
+    <select id="count" resultType="int">
+        select count(1) from user;
+    </select>
+
+    <select id="findLimit" resultMap="UserResult">
+        select id, name, phone, ceate_by, birthday, remark from user order by id asc limit #{index}, #{pageSize}
+    </select>
+</mapper>
